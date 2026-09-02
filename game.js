@@ -4,9 +4,11 @@ const scoreElement = document.querySelector('#score');
 const bestElement = document.querySelector('#best');
 const statusElement = document.querySelector('#status');
 const startButton = document.querySelector('#start');
+const themeSelect = document.querySelector('#theme');
 const gridSize = 24;
 const cellSize = canvas.width / gridSize;
 const bestKey = 'neon-coil-best';
+const themeKey = 'neon-coil-theme';
 let snake;
 let food;
 let direction;
@@ -15,6 +17,25 @@ let score;
 let running;
 let paused;
 let timer;
+
+function getThemeColors() {
+  const styles = getComputedStyle(document.body);
+  return {
+    board: styles.getPropertyValue('--board').trim() || '#0d1510',
+    grid: styles.getPropertyValue('--grid').trim() || 'rgba(199, 244, 100, .06)',
+    food: styles.getPropertyValue('--food').trim() || '#ff8157',
+    head: styles.getPropertyValue('--head').trim() || '#e5ff9c',
+    snake: styles.getPropertyValue('--snake').trim() || '#91bd4c',
+    overlay: styles.getPropertyValue('--overlay').trim() || 'rgba(8, 12, 9, .68)'
+  };
+}
+
+function setTheme(theme) {
+  document.body.dataset.theme = theme;
+  themeSelect.value = theme;
+  localStorage.setItem(themeKey, theme);
+  if (snake && food) draw();
+}
 
 function reset() {
   snake = [{ x: 12, y: 13 }, { x: 11, y: 13 }, { x: 10, y: 13 }];
@@ -74,24 +95,25 @@ function updateScore() {
 }
 
 function draw(gameOver = false) {
-  context.fillStyle = '#0d1510';
+  const colors = getThemeColors();
+  context.fillStyle = colors.board;
   context.fillRect(0, 0, canvas.width, canvas.height);
-  context.strokeStyle = 'rgba(199, 244, 100, .06)';
+  context.strokeStyle = colors.grid;
   context.lineWidth = 1;
   for (let index = 1; index < gridSize; index += 1) {
     context.beginPath(); context.moveTo(index * cellSize, 0); context.lineTo(index * cellSize, canvas.height); context.stroke();
     context.beginPath(); context.moveTo(0, index * cellSize); context.lineTo(canvas.width, index * cellSize); context.stroke();
   }
-  context.fillStyle = '#ff8157';
+  context.fillStyle = colors.food;
   context.beginPath();
   context.arc(food.x * cellSize + cellSize / 2, food.y * cellSize + cellSize / 2, cellSize * .29, 0, Math.PI * 2);
   context.fill();
   snake.forEach((part, index) => {
-    context.fillStyle = index === 0 ? '#e5ff9c' : '#91bd4c';
+    context.fillStyle = index === 0 ? colors.head : colors.snake;
     context.fillRect(part.x * cellSize + 2, part.y * cellSize + 2, cellSize - 4, cellSize - 4);
   });
   if (gameOver) {
-    context.fillStyle = 'rgba(8, 12, 9, .68)';
+    context.fillStyle = colors.overlay;
     context.fillRect(0, 0, canvas.width, canvas.height);
   }
 }
@@ -116,6 +138,8 @@ document.addEventListener('keydown', (event) => {
 });
 
 startButton.addEventListener('click', reset);
+themeSelect.addEventListener('change', (event) => setTheme(event.target.value));
+setTheme(localStorage.getItem(themeKey) || 'lime');
 reset();
 running = false;
 clearInterval(timer);
