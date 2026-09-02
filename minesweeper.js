@@ -1,4 +1,6 @@
 document.body.dataset.theme = localStorage.getItem('neon-coil-theme') || 'lime';
+if (localStorage.getItem('neon-coil-fullscreen') === 'true') document.addEventListener('pointerdown', () => document.querySelector('.shell').requestFullscreen().catch(() => {}), { once: true });
+document.addEventListener('fullscreenchange', () => localStorage.setItem('neon-coil-fullscreen', document.fullscreenElement ? 'true' : 'false'));
 const boardEl=document.querySelector('#board'), minesEl=document.querySelector('#mines-left'), statusEl=document.querySelector('#status'), startBtn=document.querySelector('#start');
 const size=10,mines=10;let cells,gameOver;
 function reset(){gameOver=false;cells=Array.from({length:size*size},(_,index)=>({index,mine:false,revealed:false,flagged:false,count:0}));let spots=[...cells].sort(()=>Math.random()-.5);spots.slice(0,mines).forEach(cell=>cell.mine=true);cells.forEach(cell=>{cell.count=cells.filter(other=>other.mine&&neighbors(cell.index).includes(other.index)).length;});minesEl.textContent=mines;statusEl.textContent='READY';render();}

@@ -1,4 +1,6 @@
 document.body.dataset.theme = localStorage.getItem('neon-coil-theme') || 'lime';
+if (localStorage.getItem('neon-coil-fullscreen') === 'true') document.addEventListener('pointerdown', () => document.querySelector('.shell').requestFullscreen().catch(() => {}), { once: true });
+document.addEventListener('fullscreenchange', () => localStorage.setItem('neon-coil-fullscreen', document.fullscreenElement ? 'true' : 'false'));
 const canvas=document.querySelector('#game'),ctx=canvas.getContext('2d'),scoreEl=document.querySelector('#score'),statusEl=document.querySelector('#status'),startBtn=document.querySelector('#start');
 let paddle,ball,bricks,score,keys={},active=false,timer;
 function reset(){paddle={x:250,y:555,w:100};ball={x:300,y:530,dx:4,dy:-4};bricks=[];for(let row=0;row<5;row++)for(let col=0;col<8;col++)bricks.push({x:42+col*66,y:70+row*28,w:54,h:16,alive:true});score=0;scoreEl.textContent='000';active=true;statusEl.textContent='LIVE';startBtn.textContent='RESTART GAME';clearInterval(timer);timer=setInterval(tick,20);draw();}
