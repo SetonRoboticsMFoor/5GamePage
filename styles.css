@@ -1,0 +1,47 @@
+:root {
+  --ink: #f4f7f0;
+  --muted: #9ba89e;
+  --panel: #17221d;
+  --line: #2d3d33;
+  --lime: #c7f464;
+  --orange: #ff8157;
+  --night: #0b0f0d;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background: radial-gradient(circle at 80% 0%, #293e31 0, #111713 42%, var(--night) 100%);
+  font-family: Georgia, serif;
+}
+
+.shell { width: min(1080px, 100%); margin: auto; padding: 34px 22px; }
+.masthead { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 22px; }
+.eyebrow { margin: 0 0 8px; color: var(--lime); font: 700 12px/1.2 monospace; letter-spacing: 2px; text-transform: uppercase; }
+h1 { margin: 0; font-size: clamp(42px, 8vw, 82px); line-height: .9; }
+.intro { max-width: 270px; margin: 0; color: var(--muted); font: 14px/1.5 monospace; }
+.game-layout { display: grid; grid-template-columns: minmax(280px, 680px) 1fr; gap: 22px; align-items: start; }
+.board-frame { position: relative; padding: 12px; background: var(--panel); border: 1px solid var(--line); box-shadow: 12px 12px 0 #0a0d0b; }
+canvas { display: block; width: 100%; aspect-ratio: 1; background: #0d1510; image-rendering: pixelated; }
+.status { position: absolute; top: 26px; left: 26px; padding: 7px 10px; color: #101710; background: var(--lime); font: 700 12px monospace; }
+.sidebar { display: grid; gap: 14px; }
+.score-panel { padding: 20px; border-top: 3px solid var(--orange); background: var(--panel); }
+.score-panel span, .score-panel small { display: block; color: var(--muted); font: 11px monospace; text-transform: uppercase; }
+.score-panel strong { display: block; margin: 2px 0 12px; color: var(--lime); font: 700 54px/1 monospace; }
+.score-panel b { color: var(--ink); }
+.controls { color: var(--muted); font: 13px/2 monospace; }
+.controls span { display: inline-block; width: 60px; color: var(--orange); font-weight: 700; }
+button { width: 100%; padding: 13px 16px; border: 0; color: #101710; background: var(--lime); cursor: pointer; font: 700 13px monospace; }
+button:hover { background: #e0ff91; }
+.hint { margin: 0; color: var(--muted); font: 12px/1.5 monospace; }
+
+@media (max-width: 720px) {
+  .shell { padding: 24px 14px; }
+  .masthead { display: block; }
+  .intro { margin-top: 15px; }
+  .game-layout { grid-template-columns: 1fr; }
+  .board-frame { box-shadow: 6px 6px 0 #0a0d0b; }
+}
