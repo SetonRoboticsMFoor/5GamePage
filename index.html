@@ -4,48 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0f0d">
-  <title>Neon Coil | Snake</title>
+  <title>Neon Coil Arcade</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="lobby">
   <main class="shell">
-    <header class="masthead">
+    <header class="lobby-header">
       <div>
-        <p class="eyebrow">Arcade / 001</p>
-        <h1>Neon Coil</h1>
+        <p class="eyebrow">Neon Coil / Game Select</p>
+        <h1>Pick your<br><em>arcade.</em></h1>
       </div>
-      <div class="header-tools">
-        <label for="theme">Theme</label>
-        <select id="theme" aria-label="Choose color theme">
-          <option value="lime">Neon Lime</option>
-          <option value="ocean">Electric Ocean</option>
-          <option value="ember">Hot Ember</option>
-          <option value="cobalt">Cobalt Arcade</option>
-          <option value="coral">Coral Pop</option>
-          <option value="violet">Violet Pulse</option>
-        </select>
-        <p class="intro">Eat the bright fruit. Grow with every bite. Keep your cool when the walls close in.</p>
-      </div>
+      <p class="intro">Five quick games. One bright little corner of the web. Choose a cabinet and make a high score.</p>
     </header>
-
-    <section class="game-layout" aria-label="Snake game">
-      <div class="board-frame">
-        <div class="status" id="status">READY</div>
-        <canvas id="game" width="600" height="600" aria-label="Snake game board"></canvas>
-      </div>
-      <aside class="sidebar">
-        <div class="score-panel">
-          <span>Current score</span>
-          <strong id="score">000</strong>
-          <small>Best: <b id="best">000</b></small>
-        </div>
-        <div class="controls"><span>MOVE</span> Arrow keys or WASD<br><span>PAUSE</span> Spacebar</div>
-        <button id="start" type="button">START GAME</button>
-        <button id="fullscreen" type="button">ENTER FULLSCREEN</button>
-        <p class="hint">Your best run is saved in this browser.</p>
-      </aside>
+    <section class="game-grid" aria-label="Available games">
+      <a class="game-card featured" href="snake.html"><div class="preview preview-snake" aria-hidden="true"><i></i><i></i><i></i><b></b></div><div class="card-copy"><span class="card-number">01 / CLASSIC</span><h2>Neon Coil</h2><p>Guide the growing coil through a glowing grid without touching the walls.</p><span class="play-link">PLAY SNAKE &rarr;</span></div></a>
+      <a class="game-card" href="tetris.html"><div class="preview preview-tetris" aria-hidden="true"><i></i><i></i><b></b><em></em></div><div class="card-copy"><span class="card-number">02 / STACKER</span><h2>Tetris</h2><p>Rotate falling blocks, clear lines, and keep the stack below the ceiling.</p><span class="play-link">PLAY TETRIS &rarr;</span></div></a>
+      <a class="game-card" href="space-invaders.html"><div class="preview preview-invaders" aria-hidden="true"><i></i><i></i><i></i><b></b></div><div class="card-copy"><span class="card-number">03 / DEFENDER</span><h2>Space Invaders</h2><p>Slide your ship beneath the stars and stop the descending alien fleet.</p><span class="play-link">PLAY INVADERS &rarr;</span></div></a>
+      <a class="game-card" href="breakout.html"><div class="preview preview-breakout" aria-hidden="true"><i></i><i></i><i></i><b></b></div><div class="card-copy"><span class="card-number">04 / REFLEX</span><h2>Breakout</h2><p>Move the paddle, bounce the ball, and crack every block in the wall.</p><span class="play-link">PLAY BREAKOUT &rarr;</span></div></a>
+      <a class="game-card" href="minesweeper.html"><div class="preview preview-mines" aria-hidden="true"><i></i><i></i><i></i><b>?</b></div><div class="card-copy"><span class="card-number">05 / PUZZLE</span><h2>Minesweeper</h2><p>Read the numbers, mark the danger, and reveal the safe squares.</p><span class="play-link">PLAY MINESWEEPER &rarr;</span></div></a>
     </section>
+    <footer class="lobby-footer">Built for short sessions and long rematches <span>///</span> Best scores stay in this browser</footer>
   </main>
-  <script src="game.js"></script>
 </body>
 </html>

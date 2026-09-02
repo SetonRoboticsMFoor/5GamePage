@@ -144,6 +144,34 @@ button:hover { background: #e0ff91; }
 
 .shell:fullscreen { width: 100%; min-height: 100vh; padding: 34px 5vw; overflow: auto; background: var(--night); }
 
+.lobby .shell { max-width: 1240px; padding-top: 58px; }
+.lobby-header { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 42px; }
+.lobby h1 { font-size: clamp(54px, 10vw, 112px); letter-spacing: -3px; }
+.lobby h1 em { color: var(--lime); font-style: normal; }
+.lobby-header .intro { max-width: 290px; margin-bottom: 5px; }
+.game-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
+.game-card { grid-column: span 2; display: grid; color: var(--ink); background: var(--panel); border: 1px solid var(--line); text-decoration: none; transition: transform .2s ease, border-color .2s ease; }
+.game-card:first-child, .game-card:nth-child(2) { grid-column: span 3; }
+.game-card:hover { border-color: var(--lime); transform: translateY(-5px); }
+.preview { position: relative; height: 190px; overflow: hidden; background: var(--board); border-bottom: 1px solid var(--line); }
+.preview::after { content: ""; position: absolute; inset: 0; opacity: .15; background-image: linear-gradient(var(--lime) 1px, transparent 1px), linear-gradient(90deg, var(--lime) 1px, transparent 1px); background-size: 24px 24px; }
+.preview i, .preview b, .preview em { position: absolute; z-index: 1; display: block; font-style: normal; }
+.preview-snake i { width: 28px; height: 28px; background: var(--snake); }
+.preview-snake i:nth-child(1) { left: 31%; top: 48%; }.preview-snake i:nth-child(2) { left: 38%; top: 48%; }.preview-snake i:nth-child(3) { left: 45%; top: 48%; }.preview-snake b { left: 60%; top: 34%; width: 18px; height: 18px; border-radius: 50%; background: var(--food); }
+.preview-tetris i, .preview-tetris b, .preview-tetris em { width: 27px; height: 27px; background: var(--lime); }.preview-tetris i:nth-child(1) { left: 42%; top: 35%; }.preview-tetris i:nth-child(2) { left: 48%; top: 35%; }.preview-tetris b { left: 48%; top: 49%; background: var(--orange); }.preview-tetris em { left: 54%; top: 49%; background: var(--orange); }
+.preview-invaders i { width: 22px; height: 16px; background: var(--lime); top: 35%; }.preview-invaders i:nth-child(1) { left: 38%; }.preview-invaders i:nth-child(2) { left: 48%; }.preview-invaders i:nth-child(3) { left: 58%; }.preview-invaders b { bottom: 25px; left: 48%; width: 32px; height: 20px; background: var(--orange); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.preview-breakout i { width: 45px; height: 14px; top: 32%; background: var(--orange); }.preview-breakout i:nth-child(1) { left: 29%; }.preview-breakout i:nth-child(2) { left: 45%; background: var(--lime); }.preview-breakout i:nth-child(3) { left: 61%; }.preview-breakout b { left: 49%; top: 52%; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); }.preview-breakout::before { content: ""; position: absolute; z-index: 1; bottom: 24px; left: 39%; width: 22%; height: 12px; background: var(--lime); }
+.preview-mines { display: grid; grid-template-columns: repeat(4, 34px); gap: 5px; place-content: center; }.preview-mines::after { display: none; }.preview-mines i { position: relative; width: 34px; height: 34px; background: var(--line); border: 1px solid var(--lime); }.preview-mines i:nth-child(1) { left: 0; top: 0; }.preview-mines i:nth-child(2) { left: 0; top: 0; background: var(--orange); }.preview-mines i:nth-child(3) { left: 0; top: 0; }.preview-mines b { position: relative; left: auto; top: auto; color: var(--lime); font: bold 20px monospace; }
+.card-copy { padding: 22px; }.card-number { color: var(--orange); font: 700 11px monospace; letter-spacing: 1px; }.card-copy h2 { margin: 9px 0 7px; font-size: 28px; }.card-copy p { min-height: 42px; margin: 0 0 22px; color: var(--muted); font: 13px/1.5 monospace; }.play-link { color: var(--lime); font: 700 11px monospace; letter-spacing: 1px; }.lobby-footer { margin-top: 38px; color: var(--muted); font: 11px monospace; }.lobby-footer span { margin: 0 12px; color: var(--orange); }
+.arcade-nav { display: flex; justify-content: space-between; margin-bottom: 36px; color: var(--muted); font: 11px monospace; letter-spacing: 1px; }.arcade-nav a { color: var(--lime); text-decoration: none; }.arcade-nav a:hover { text-decoration: underline; }
+.game-page .shell { max-width: 1120px; }.game-page h1 { font-size: clamp(42px, 8vw, 82px); }.game-page .game-layout { grid-template-columns: minmax(280px, 720px) 1fr; }
+.game-canvas { display: block; width: 100%; aspect-ratio: 1; background: var(--board); image-rendering: pixelated; }
+.game-note { color: var(--muted); font: 13px/1.6 monospace; }
+.game-page .sidebar { align-content: start; }
+.game-page .sidebar button { margin-top: 2px; }
+.grid-board { display: grid; gap: 2px; padding: 10px; background: var(--board); }
+.mine-cell { min-width: 0; aspect-ratio: 1; border: 1px solid var(--line); color: var(--lime); background: var(--panel); font: 700 16px monospace; cursor: pointer; }.mine-cell.revealed { cursor: default; background: var(--night); border-color: transparent; }.mine-cell.mine { background: var(--orange); color: var(--night); }
+
 @media (max-width: 720px) {
   .shell { padding: 24px 14px; }
   .masthead { display: block; }
@@ -151,4 +179,5 @@ button:hover { background: #e0ff91; }
   .intro { margin-top: 15px; }
   .game-layout { grid-template-columns: 1fr; }
   .board-frame { box-shadow: 6px 6px 0 var(--shadow); }
+  .lobby .shell { padding-top: 32px; }.lobby-header { display: block; }.lobby-header .intro { margin-top: 22px; }.game-grid { grid-template-columns: 1fr; }.game-card, .game-card:first-child, .game-card:nth-child(2) { grid-column: auto; }.preview { height: 150px; }
 }
