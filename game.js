@@ -4,12 +4,9 @@ const scoreElement = document.querySelector('#score');
 const bestElement = document.querySelector('#best');
 const statusElement = document.querySelector('#status');
 const startButton = document.querySelector('#start');
-const fullscreenButton = document.querySelector('#fullscreen');
-const themeSelect = document.querySelector('#theme');
 const gridSize = 24;
 const cellSize = canvas.width / gridSize;
 const bestKey = 'neon-coil-best';
-const themeKey = 'neon-coil-theme';
 let snake;
 let food;
 let direction;
@@ -29,13 +26,6 @@ function getThemeColors() {
     snake: styles.getPropertyValue('--snake').trim() || '#91bd4c',
     overlay: styles.getPropertyValue('--overlay').trim() || 'rgba(8, 12, 9, .68)'
   };
-}
-
-function setTheme(theme) {
-  document.body.dataset.theme = theme;
-  themeSelect.value = theme;
-  localStorage.setItem(themeKey, theme);
-  if (snake && food) draw();
 }
 
 function reset() {
@@ -139,18 +129,6 @@ document.addEventListener('keydown', (event) => {
 });
 
 startButton.addEventListener('click', reset);
-themeSelect.addEventListener('change', (event) => setTheme(event.target.value));
-fullscreenButton.addEventListener('click', () => {
-  if (document.fullscreenElement) {
-    document.exitFullscreen();
-  } else {
-    document.querySelector('.shell').requestFullscreen();
-  }
-});
-document.addEventListener('fullscreenchange', () => {
-  fullscreenButton.textContent = document.fullscreenElement ? 'EXIT FULLSCREEN' : 'ENTER FULLSCREEN';
-});
-setTheme(localStorage.getItem(themeKey) || 'lime');
 reset();
 running = false;
 clearInterval(timer);

@@ -149,6 +149,10 @@ button:hover { background: #e0ff91; }
 .lobby h1 { font-size: clamp(54px, 10vw, 112px); letter-spacing: -3px; }
 .lobby h1 em { color: var(--lime); font-style: normal; }
 .lobby-header .intro { max-width: 290px; margin-bottom: 5px; }
+.lobby-tools { display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin: -18px 0 28px; }
+.lobby-tools label { color: var(--muted); font: 11px monospace; text-transform: uppercase; }
+.lobby-tools select { padding: 10px 34px 10px 10px; border: 1px solid var(--line); color: var(--ink); background: var(--panel); font: 12px monospace; }
+.lobby-tools button { width: auto; padding: 10px 14px; }
 .game-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
 .game-card { grid-column: span 2; display: grid; color: var(--ink); background: var(--panel); border: 1px solid var(--line); text-decoration: none; transition: transform .2s ease, border-color .2s ease; }
 .game-card:first-child, .game-card:nth-child(2) { grid-column: span 3; }
@@ -179,5 +183,5 @@ button:hover { background: #e0ff91; }
   .intro { margin-top: 15px; }
   .game-layout { grid-template-columns: 1fr; }
   .board-frame { box-shadow: 6px 6px 0 var(--shadow); }
-  .lobby .shell { padding-top: 32px; }.lobby-header { display: block; }.lobby-header .intro { margin-top: 22px; }.game-grid { grid-template-columns: 1fr; }.game-card, .game-card:first-child, .game-card:nth-child(2) { grid-column: auto; }.preview { height: 150px; }
+  .lobby .shell { padding-top: 32px; }.lobby-header { display: block; }.lobby-header .intro { margin-top: 22px; }.lobby-tools { justify-content: flex-start; flex-wrap: wrap; margin: 0 0 28px; }.game-grid { grid-template-columns: 1fr; }.game-card, .game-card:first-child, .game-card:nth-child(2) { grid-column: auto; }.preview { height: 150px; }
 }

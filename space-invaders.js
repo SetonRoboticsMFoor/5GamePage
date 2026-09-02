@@ -1,3 +1,4 @@
+document.body.dataset.theme = localStorage.getItem('neon-coil-theme') || 'lime';
 const canvas=document.querySelector('#game'),ctx=canvas.getContext('2d'),scoreEl=document.querySelector('#score'),statusEl=document.querySelector('#status'),startBtn=document.querySelector('#start');
 let ship, aliens, shots, score, keys={}, active=false, timer;
 function reset(){ship={x:280,y:540};aliens=[];for(let row=0;row<4;row++)for(let col=0;col<8;col++)aliens.push({x:100+col*55,y:100+row*38,alive:true});shots=[];score=0;scoreEl.textContent='000';active=true;statusEl.textContent='LIVE';startBtn.textContent='RESTART GAME';clearInterval(timer);timer=setInterval(tick,30);draw();}
